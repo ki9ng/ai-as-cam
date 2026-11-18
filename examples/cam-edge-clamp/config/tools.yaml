@@ -1,12 +1,41 @@
-# EXAMPLE tools, measured on one machine in aluminium. Not safe defaults for yours.
+# EXAMPLE tool library: one 3018-class machine, aluminium. Not safe defaults for yours.
 tools:
   - id: T1
-    type: o_flute_single
-    diameter_mm: 1.5
-    pocket: {doc_mm: 0.16, stepover_mm: 0.30, feed: 150, helix_feed: 60, helix_r_mm: 0.40, helix_pitch_mm: 0.15}
+    name: 1.5 mm single-edge O-flute
+    type: o_flute
+    geometry: {diameter_mm: 1.5, flutes: 1}
+    materials:
+      aluminium:
+        status: proven
+        ops:
+          pocket:
+            doc_mm: {value: 0.16, source: measured}
+            stepover_mm: {value: 0.30, source: measured}
+            feed_mm_min: {value: 150, source: measured}
+            helix_feed_mm_min: {value: 60, source: measured}
+            helix_r_mm: {value: 0.40, source: measured}
+            helix_pitch_mm: {value: 0.15, source: measured}
+    history: []
   - id: T2
-    type: flat_single_flute
-    diameter_mm: 3.175
-    trochoid: {loop_r_mm: 0.60, step_mm: 0.20, feed: 80, air_feed: 400, helix_feed: 60, finish_feed: 100,
-               z_feed: 60, helix_pitch_mm: 0.15, cleanup_mm: 0.05, doc_mm: 0}
-    bore: {feed: 100, helix_pitch_mm: 0.15}
+    name: 1/8 in single-flute flat
+    type: flat_endmill
+    geometry: {diameter_mm: 3.175, flutes: 1}
+    materials:
+      aluminium:
+        status: coupon_passed
+        ops:
+          trochoid:
+            loop_r_mm: {value: 0.60, source: starting}
+            step_mm: {value: 0.20, source: starting}
+            feed_mm_min: {value: 80, source: starting}
+            air_feed_mm_min: {value: 400, source: starting}
+            helix_feed_mm_min: {value: 60, source: starting}
+            finish_feed_mm_min: {value: 100, source: starting}
+            z_feed_mm_min: {value: 60, source: starting}
+            helix_pitch_mm: {value: 0.15, source: starting}
+            cleanup_mm: {value: 0.05, source: starting}
+            doc_mm: {value: 0, source: starting}
+          bore:
+            feed_mm_min: {value: 100, source: starting}
+            helix_pitch_mm: {value: 0.15, source: starting}
+    history: []

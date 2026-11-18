@@ -8,6 +8,7 @@ When `machines/` holds only `example.yaml`, or the user asks to set up:
 2. Machine: name, controller/firmware (GRBL, FluidNC, LinuxCNC, Marlin...), travel X/Y/Z, max feed per axis or controller clamp, spindle type and RPM range, rotary axis if any.
 3. Workholding and probing: probe available? zero conventions (stock top = Z0? corner or center?).
 4. Tool library (`tools/<name>.yaml`, format in `tools/example.yaml`): for each tool, type and geometry (diameter, flutes, flute length, stickout, corner radius or V angle and tip), tool material/coating, and per workpiece material: RPM, feed, plunge, DOC, stepover. Mark each number `measured` or `starting`, and each tool/material pair `untested`, `coupon_passed` or `proven`. Unknown values stay out.
+   - **Research known tools.** If the user names a brand and model (or a link), search for the maker's published data: geometry and recommended speeds and feeds. Record them with `source: manufacturer` and the `url`. Maker charts usually assume rigid industrial machines; show the numbers to the user and let them choose a `starting` value for their machine. A manufacturer number never makes a tool `proven`; only cutting does.
 5. Materials the user cuts.
 6. Write `machines/<name>.yaml` and `tools/<name>.yaml`, show them to the user, and commit only after they confirm.
 7. Run the test suite to confirm the install works.

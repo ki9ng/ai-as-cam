@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""EXAMPLE. Every feed, speed and depth is read from config/ (machine.yaml, tools.yaml).
+"""EXAMPLE. Every feed, speed and depth is read from config/ (machine.yaml, tools.yaml tool library).
 The shipped config is one 3018-class machine: set CONFIG to your own before generating.
 
 Spiral cam edge clamp v4 — G-code, ONE setup (blank glued BOTTOM-UP).
@@ -30,11 +30,14 @@ import cam_geom as G
 # ---- all machine and tool numbers come from config (machine.yaml / tools.yaml) ----
 # Point CONFIG at your own folder; the shipped config/ is ONE example machine, not safe defaults.
 import yaml
+sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "..", ".."))
+from aiascam.config import tool_data  # noqa: E402
 CFG = os.environ.get("CONFIG", os.path.join(os.path.dirname(os.path.abspath(__file__)), "config"))
 MACH = yaml.safe_load(open(os.path.join(CFG, "machine.yaml")))
-TOOLS = {t["id"]: t for t in yaml.safe_load(open(os.path.join(CFG, "tools.yaml")))["tools"]}
+LIB = yaml.safe_load(open(os.path.join(CFG, "tools.yaml")))
 JOB = MACH.get("job", {})
-T1, T2 = TOOLS[JOB.get("pocket_tool", "T1")], TOOLS[JOB.get("cutout_tool", "T2")]
+MAT = JOB.get("material", "aluminium")
+T1_ID, T2_ID = JOB.get("pocket_tool", "T1"), JOB.get("cutout_tool", "T2")
 
 STOCK = float(os.environ.get("STOCK", JOB.get("stock_mm", 12.7)))   # CALIPER IT
 BREAK = JOB.get("break_through_mm", 0.20)                            # into the glue
@@ -43,23 +46,25 @@ OUT = os.environ.get("OUT", os.path.join(os.path.dirname(os.path.abspath(__file_
 ZSAFE = MACH.get("z_safe_mm", 3.0)
 S = MACH.get("spindle_rpm", {}).get("default", 10000)
 
-# ---- T1: pocket tool ----
-T1_D = T1["diameter_mm"]
-P = T1["pocket"]
-P_DOC, P_STEP, P_F, P_FZ = P["doc_mm"], P["stepover_mm"], P["feed"], P["helix_feed"]
+# ---- T1: pocket tool (tool library, op "pocket") ----
+P = tool_data(LIB, T1_ID, MAT, "pocket")
+T1_D = P["geometry"]["diameter_mm"]
+P_DOC, P_STEP, P_F, P_FZ = P["doc_mm"], P["stepover_mm"], P["feed_mm_min"], P["helix_feed_mm_min"]
 P_HELIX_R, P_HELIX_PITCH = P["helix_r_mm"], P["helix_pitch_mm"]
 
-# ---- T2: cutout tool, trochoidal ----
-T2_D = float(os.environ.get("T2_D", T2["diameter_mm"]))   # replace with the measured cut dia
-TR = T2["trochoid"]
+# ---- T2: cutout tool (tool library, ops "trochoid" and "bore") ----
+TR = tool_data(LIB, T2_ID, MAT, "trochoid")
+BO = tool_data(LIB, T2_ID, MAT, "bore")
+T2_D = float(os.environ.get("T2_D", TR["geometry"]["diameter_mm"]))   # replace with the measured cut dia
 LOOP_R = TR["loop_r_mm"]         # kerf = D + 2 * LOOP_R
 W = T2_D + 2 * LOOP_R
 STEP = TR["step_mm"]
-F_CUT, F_AIR, F_HELIX, F_FIN, FZ = TR["feed"], TR["air_feed"], TR["helix_feed"], TR["finish_feed"], TR["z_feed"]
+F_CUT, F_AIR, F_HELIX, F_FIN, FZ = (TR["feed_mm_min"], TR["air_feed_mm_min"], TR["helix_feed_mm_min"],
+                                    TR["finish_feed_mm_min"], TR["z_feed_mm_min"])
 HELIX_PITCH = TR["helix_pitch_mm"]
 CLEAN = TR["cleanup_mm"]
 DOC_T2 = float(os.environ.get("DOC_T2", TR.get("doc_mm", 0)))   # 0 -> ~1 x D, evenly split
-HOLE_F, HOLE_PITCH = T2["bore"]["feed"], T2["bore"]["helix_pitch_mm"]
+HOLE_F, HOLE_PITCH = BO["feed_mm_min"], BO["helix_pitch_mm"]
 
 TOUCH_NOTE = "touch-off point"
 

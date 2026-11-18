@@ -1,6 +1,9 @@
 # Template tool library. One entry per tool. Your agent builds this with you during setup
 # and updates it after test coupons and post-mortems. Never invent numbers: leave a value
-# out if you don't know it, and mark every cutting number measured or starting.
+# out if you don't know it, and mark where every cutting number came from:
+#   measured      cut and confirmed on this machine
+#   manufacturer  from the tool maker's published data (add url:)
+#   starting      a value the user chose to try
 tools:
   - id: T1
     name: 1/8 in 2-flute flat end mill
@@ -18,9 +21,11 @@ tools:
     materials:                  # cutting data per workpiece material
       aluminium_6061:
         status: untested        # untested | coupon_passed | proven
-        rpm: {value: 10000, source: starting}       # source: measured | starting
+        rpm: {value: 10000, source: starting}       # source: measured | manufacturer | starting
         feed_mm_min: {value: 300, source: starting}
         plunge_mm_min: {value: 60, source: starting}
         doc_mm: {value: 0.3, source: starting}
         stepover_mm: {value: 1.0, source: starting}
+        # feed_mm_min: {value: 450, source: manufacturer, url: https://..., note: rigid-machine chart}
+        ops: {}                 # optional per-strategy overrides, e.g. trochoid: {loop_r_mm: {value: 0.6, source: measured}}
     history: []                 # post-mortem files about this tool, e.g. postmortems/2026-01-15-broken-bit.md
