@@ -1,0 +1,6 @@
+# Template machine profile: 3018-class router, GRBL/FluidNC. Replace with measured values.
+name: example-3018
+controller: fluidnc
+travel_mm: {x: 300, y: 180, z: 45}
+max_feed_mm_min: {x: 1000, y: 1000, z: 500}
+spindle_rpm: {min: 0, max: 10000}
