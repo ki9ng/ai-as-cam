@@ -16,7 +16,7 @@ The user and the agent write it together, right after the failure, while the det
 1. **What happened.** Facts only: file, line, tool, material, what you saw.
 2. **Why.** The real cause, not the first guess. Say whether it was measured or assumed.
 3. **The fix.** Make it concrete, and put it where it will be applied automatically next time:
-   - a **number** in your `machines/` or `tools/` config (a feed, depth or limit you measured),
+   - a **number** in your `machines/` config or tool library (a feed, depth or limit you measured; add the post-mortem to that tool's `history`),
    - a **rule** in your agent file (how the agent should plan or write generators), or
    - a **check** (a new gate, or a test that would have caught it).
 4. **Proof.** Re-run the gates or tests and show that the fix catches the original problem.

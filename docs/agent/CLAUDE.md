@@ -10,3 +10,4 @@
 - Read `postmortems/` before planning a new job.
 - Keep everything in this repo as files: config, rules, post-mortems, G-code versions. Don't assume a server or remote access.
 - When planning a job, read `docs/agent/strategies.md`. Name each strategy you choose and why, in the plan, so the user can see and override it.
+- Every feed, speed, DOC and stepover comes from the tool library. If the tool/material pair is `untested`, plan a test coupon first. After a cut, propose library updates (values to `measured`, status, history) and write them once the user confirms.
