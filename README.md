@@ -6,7 +6,7 @@ This repo holds the reusable parts of that workflow:
 
 - **Verifier / gates**: re-read the G-code from disk and replay it against the stock and part (gouges, leftover material, travel limits, feeds).
 - **Air-time audit**: measure how much of a program cuts nothing.
-- **G-code helpers**: safe comments, emitters.
+- **G-code parser**: reads the file from disk for the gates.
 - **Agent instructions**: rules an AI agent follows when doing CAM work (`docs/agent/CLAUDE.md`).
 - **Worked example**: a cam edge clamp, from part to passing gates (`examples/cam-edge-clamp/`).
 
@@ -17,7 +17,7 @@ This repo holds the reusable parts of that workflow:
 3. Run the gates on the file as written to disk.
 4. Only a passing, versioned file goes to the machine, and only when the operator says go.
 
-See `docs/method.md`. Each gate exists because something went wrong; `docs/postmortems.md` gives one line per gate.
+See `docs/method.md`. Each gate exists because something went wrong; a one-line-per-gate history is coming in `docs/postmortems.md`.
 
 ## Status
 
