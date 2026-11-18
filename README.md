@@ -17,7 +17,9 @@ This repo holds the reusable parts of that workflow:
 3. Run the gates on the file as written to disk.
 4. Only a passing, versioned file goes to the machine, and only when the operator says go.
 
-See `docs/method.md`. Each gate exists because something went wrong; a one-line-per-gate history is coming in `docs/postmortems.md`.
+See `docs/method.md`. Each gate exists because something went wrong. When something goes wrong for you, you and your agent write a post-mortem and turn the fix into config, a rule or a check; see `docs/postmortems.md`.
+
+Everything lives in your own clone as plain files in git: config, rules, post-mortems and G-code versions. No server needed.
 
 ## Status
 

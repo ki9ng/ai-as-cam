@@ -6,4 +6,6 @@
 - Run the air-time audit on every file.
 - Load machine limits and tool data from `machines/` and `tools/`; never assume generic speeds and feeds.
 - Never start a cut, jog, or send G-code to a machine without the operator's explicit go.
-- When a result doesn't match expectation, write a post-mortem: what went wrong, why, and the concrete fix.
+- When a result doesn't match expectation, write a post-mortem with the user (see `docs/postmortems.md`) and put the fix into config, rules or a check.
+- Read `postmortems/` before planning a new job.
+- Keep everything in this repo as files: config, rules, post-mortems, G-code versions. Don't assume a server or remote access.
