@@ -1,0 +1,12 @@
+# EXAMPLE tools, measured on one machine in aluminium. Not safe defaults for yours.
+tools:
+  - id: T1
+    type: o_flute_single
+    diameter_mm: 1.5
+    pocket: {doc_mm: 0.16, stepover_mm: 0.30, feed: 150, helix_feed: 60, helix_r_mm: 0.40, helix_pitch_mm: 0.15}
+  - id: T2
+    type: flat_single_flute
+    diameter_mm: 3.175
+    trochoid: {loop_r_mm: 0.60, step_mm: 0.20, feed: 80, air_feed: 400, helix_feed: 60, finish_feed: 100,
+               z_feed: 60, helix_pitch_mm: 0.15, cleanup_mm: 0.05, doc_mm: 0}
+    bore: {feed: 100, helix_pitch_mm: 0.15}

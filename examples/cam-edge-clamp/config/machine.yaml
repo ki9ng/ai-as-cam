@@ -1,0 +1,12 @@
+# EXAMPLE machine: one 3018-class router on FluidNC. Not safe defaults for yours.
+name: example-3018
+controller: fluidnc
+travel_mm: {x: 300, y: 180, z: 45}
+max_feed_mm_min: {x: 750, y: 750, z: 600}   # controller clamp
+spindle_rpm: {min: 0, max: 10000, default: 10000}
+z_safe_mm: 3.0
+job:                     # this part's job settings
+  stock_mm: 12.7         # caliper your stock
+  break_through_mm: 0.20
+  pocket_tool: T1
+  cutout_tool: T2
