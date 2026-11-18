@@ -6,7 +6,6 @@ This repo holds the reusable parts of that workflow:
 
 - **Verifier / gates**: re-read the G-code from disk and replay it against the stock and part (gouges, leftover material, travel limits, feeds).
 - **Air-time audit**: measure how much of a program cuts nothing.
-- **Probe height map + skew**: correct for stock that isn't flat or square.
 - **G-code helpers**: safe comments, emitters.
 - **Agent instructions**: rules an AI agent follows when doing CAM work (`docs/agent/CLAUDE.md`).
 - **Worked example**: a cam edge clamp, from part to passing gates (`examples/cam-edge-clamp/`).
@@ -22,7 +21,7 @@ See `docs/method.md`. Each gate exists because something went wrong; `docs/postm
 
 ## Status
 
-Early skeleton. Code is being extracted and generalized from working per-part tools.
+Pre-release. The verifier, air-time audit and the cam edge clamp example work and pass their tests. Planned later (optional): probe height map + skew correction for warped or out-of-square stock.
 
 ## Install
 
