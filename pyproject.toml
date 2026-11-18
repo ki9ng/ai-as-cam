@@ -4,4 +4,4 @@ version = "0.0.1"
 description = "Gates and helpers for AI-written CNC toolpath generators"
 license = {text = "GPL-3.0-or-later"}
 requires-python = ">=3.10"
-dependencies = ["numpy"]
+dependencies = ["numpy", "pyyaml"]
