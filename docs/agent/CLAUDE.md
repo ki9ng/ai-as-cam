@@ -9,3 +9,4 @@
 - When a result doesn't match expectation, write a post-mortem with the user (see `docs/postmortems.md`) and put the fix into config, rules or a check.
 - Read `postmortems/` before planning a new job.
 - Keep everything in this repo as files: config, rules, post-mortems, G-code versions. Don't assume a server or remote access.
+- When planning a job, read `docs/agent/strategies.md`. Name each strategy you choose and why, in the plan, so the user can see and override it.
