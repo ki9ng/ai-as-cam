@@ -1,5 +1,7 @@
 # ai-as-cam
 
+![Logo keychain carved in bare aluminium on a 3018 router, toolpaths written by an AI](docs/images/blastcamp-keychain.jpg)
+
 **No CAM software. An AI writes the toolpath generator for each part, and automated gates decide whether the G-code may run.**
 
 This repo holds the reusable parts of that workflow:
