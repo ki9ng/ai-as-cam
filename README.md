@@ -12,6 +12,15 @@ This repo holds the reusable parts of that workflow:
 - **Agent instructions**: rules an AI agent follows when doing CAM work (`docs/agent/CLAUDE.md`).
 - **Worked example**: a cam edge clamp, from part to passing gates (`examples/cam-edge-clamp/`).
 
+## Gallery
+
+Parts made this way on a 3018-class router. No CAM software; the AI wrote every generator.
+
+| | | |
+|---|---|---|
+| ![Logo keychain in bare aluminium](docs/images/blastcamp-keychain.jpg) | ![Club logo keychain](docs/images/nica-keychain.jpg) | ![Relief carving in progress](docs/images/relief-cutting.jpg) |
+| Logo keychain: 3 end mills, ball-nose dome, V-carved letters | Club logo keychain | Relief carving on the machine |
+
 ## The loop
 
 1. State the part, stock, machine and tools.
