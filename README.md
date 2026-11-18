@@ -24,6 +24,10 @@ See `docs/method.md`. Each gate exists because something went wrong; `docs/postm
 
 Early skeleton. Code is being extracted and generalized from working per-part tools.
 
+## Install
+
+Open this repo in an AI coding agent (Claude Code, Codex, ...) and ask it to set up ai-as-cam. It clones the repo, interviews you about your machine and tools, and writes your config. See `docs/agent/SETUP.md`.
+
 ## Configuration
 
 Machine and tool specifics live in `machines/*.yaml` and `tools/*.yaml`. The examples are templates for a 3018-class GRBL/FluidNC router; copy and edit them for your own machine.
