@@ -38,6 +38,8 @@ Pre-release. The verifier, air-time audit and the cam edge clamp example work an
 
 ## Install
 
+**Requirement:** Claude Code or Codex, installed and signed in. That's the only thing you install yourself; the agent installs git and Python 3.10+ if they're missing.
+
 Open this repo in an AI coding agent (Claude Code, Codex, ...) and ask it to set up ai-as-cam. It clones the repo, interviews you about your machine and tools, and writes your config. See `docs/agent/SETUP.md`.
 
 ## Configuration

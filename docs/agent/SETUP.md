@@ -4,6 +4,8 @@ Installing ai-as-cam means: the user opens this repo in an AI coding agent (Clau
 
 When `machines/` holds only `example.yaml`, or the user asks to set up:
 
+**Dependencies first.** ai-as-cam needs **git** (every config, rule, post-mortem and G-code version is kept in git, so nothing is ever overwritten) and **Python 3.10+**. Check for both; if either is missing, install it with the platform's usual method (winget on Windows, Homebrew on macOS, the package manager on Linux), telling the user what you're installing and why. Then install the Python dependencies from `pyproject.toml`. The user's only job is having Claude Code or Codex installed and signed in.
+
 0. **Gauge experience first.** Ask how long they've run this machine and what they already have written down: feeds-and-speeds notes, a spreadsheet, a tool library exported from other CAM (Vectric `.vtdb`, Carbide Create, Fusion), or G-code that has run well. Import whatever they hand over before asking anything else, then ask only about what's still missing.
    - **Experienced user with records:** take values from their records and confirm them in batches. Spend the questions on depth instead: rigidity, deflection limits, chip loads they trust, finish and tolerance expectations. Numbers they've actually run are `measured`; tool/material pairs they've cut repeatedly can be `proven` on their history.
    - **New user:** don't ask for what they can't know yet. Keep it to machine basics and the tools in hand, use the maker's numbers as `starting` values, and tell them to expect test coupons before real parts.
